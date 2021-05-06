@@ -311,6 +311,7 @@ class MedusaApp(object):
         self.POSTPONE_IF_NO_SUBS = False
         self.NFO_RENAME = True
         self._TV_DOWNLOAD_DIR = None
+        self._TARGET_PARENT_DIR = None
         self.UNPACK = False
         self.SKIP_REMOVED_FILES = False
         self.ALLOWED_EXTENSIONS = ['srt', 'nfo', 'sub', 'idx']
@@ -950,6 +951,16 @@ class MedusaApp(object):
     def TORRENT_DIR(self, value):
         """Change TORRENT_DIR."""
         self.handle_prop('TORRENT_DIR', value)
+
+    @property
+    def TARGET_PARENT_DIR(self):
+        """Return app.TARGET_PARENT_DIR."""
+        return self._TARGET_PARENT_DIR
+
+    @TARGET_PARENT_DIR.setter
+    def TARGET_PARENT_DIR(self, value):
+        """Change TARGET_PARENT_DIR."""
+        self.handle_prop('TARGET_PARENT_DIR', value)
 
     @property
     def TV_DOWNLOAD_DIR(self):

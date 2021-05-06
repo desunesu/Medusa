@@ -670,6 +670,7 @@ class Application(object):
             app.TORRENT_DIR = check_setting_str(app.CFG, 'Blackhole', 'torrent_dir', '')
 
             app.TV_DOWNLOAD_DIR = check_setting_str(app.CFG, 'General', 'tv_download_dir', '')
+            app.TARGET_PARENT_DIR = check_setting_str(app.CFG, 'General', 'target_parent_dir', '')
             app.PROCESS_AUTOMATICALLY = bool(check_setting_int(app.CFG, 'General', 'process_automatically', 0))
             app.NO_DELETE = bool(check_setting_int(app.CFG, 'General', 'no_delete', 0))
             app.UNPACK = bool(check_setting_int(app.CFG, 'General', 'unpack', 0))

@@ -210,6 +210,28 @@ def change_TV_DOWNLOAD_DIR(tv_download_dir):
 
     return True
 
+def change_TARGET_PARENT_DIR(target_parent_dir):
+    """
+    Change TARGET PARENT directory (used by postprocessor)
+
+    :param target_parent_dir: New directory to be target parent instead of current one
+    :return: True on success, False on failure
+    """
+    if not target_parent_dir:
+        app._TARGET_PARENT_DIR = ''
+        return True
+
+    app_target_parent_dir = os.path.normpath(app._TARGET_PARENT_DIR) if app._TARGET_PARENT_DIR else None
+
+    if app_target_parent_dir != os.path.normpath(target_parent_dir):
+        if helpers.make_dir(target_parent_dir):
+            app._TARGET_PARENT_DIR = os.path.normpath(target_parent_dir)
+            log.info(u'Changed target parent folder to {target_parent}', {u'target_parent': target_parent_dir})
+        else:
+            return False
+
+    return True
+
 
 def change_AUTOPOSTPROCESSOR_FREQUENCY(freq):
     """

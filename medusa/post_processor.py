@@ -1219,6 +1219,10 @@ class PostProcessor(object):
         try:
             proper_path = ep_obj.proper_path()
             proper_absolute_path = os.path.join(ep_obj.series.validate_location, proper_path)
+
+            if app.TARGET_PARENT_DIR is not None:
+                proper_absolute_path = os.path.join(app.TARGET_PARENT_DIR, ep_obj.series.name, proper_path)
+
             dest_path = os.path.dirname(proper_absolute_path)
         except ShowDirectoryNotFoundException:
             raise EpisodePostProcessingFailedException(u"Unable to post-process an episode if the show dir '{0}' "
